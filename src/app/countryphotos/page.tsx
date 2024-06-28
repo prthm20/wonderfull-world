@@ -5,6 +5,7 @@ import { useSearchParams,useRouter } from "next/navigation";
 import Image from "next/image";
 import { PexelsQuery } from "../../components/ui/pexelsapi";
 import Link from "next/link";
+import Navbar from "../../components/ui/Navbar";
 
 interface Photo {
   id: number;
@@ -39,6 +40,10 @@ const Country = () => {
   };
 
   return (
+    <>
+   <div>
+    <Navbar></Navbar>
+   </div>
     <main className="bg-slate-100 min-h-screen">
      <div>
   <h1 className="text-center text-4xl font-extrabold text-gray-800 opacity-90 py-6 bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 bg-clip-text">
@@ -84,6 +89,7 @@ const Country = () => {
         )}
       </div>
     </main>
+    </>
   );
 };
 
