@@ -1,31 +1,18 @@
-import axios from 'axios';
+import { GoogleGenerativeAI } from "@google/generative-ai";
 
-const apiKey ='5ae2e3f221c38a28845f05b692ee9de4bcc20611cb8e811b1ffb66f8'; // Ensure to set this in your environment variables // Ensure to set this in your environment variables
-var country="India"
-if (country=="India"){
-  country="New Delhi"
+// Access your API key (see "Set up your API key" above)
+const genAI = new GoogleGenerativeAI('AIzaSyCTEMg29SKSk0ENrvm-txH2fE7rQVGmrQs');
+
+export default async function run(query:string) {
+  // The Gemini 1.5 models are versatile and work with both text-only and multimodal prompts
+  const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash"});
+
+  const prompt = `top 30 destinations in ${query} ,give them in a proper way don't write any preinfo or postinfo directly give the names and links of destinations (i want to show it on my website) `
+
+  const result = await model.generateContent(prompt);
+  const response = await result.response;
+  const text =response.text;
+  console.log(text);
+  return text;
 }
 
-export default async function getTouristDestinations() {
-        const response = await axios.get(`https://api.opentripmap.com/0.1/en/places/geoname`, {
-            params: {
-                name:country,
-                apikey: apiKey
-            }
-        })
-        console.log(response.data)
-const { lon, lat } = response.data;
-//const lat=28.63576000     
-//const lon= 77.22445000
-  const placesResponse:any= await axios.get(`https://api.opentripmap.com/0.1/en/places/radius`, {
-    params: {
-      radius: 50000,
-      lon,
-      lat,
-      kinds: 'interesting_places',
-      apikey: apiKey
-    }
-  });
- console.log(placesResponse.data.features)
-  return
-}

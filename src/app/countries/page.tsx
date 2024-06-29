@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import React, { useEffect, useState } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
@@ -6,6 +6,7 @@ import Image from "next/image";
 import { PexelsQuery } from "../../components/ui/pexelsapi";
 import Navbar from "../../components/ui/Navbar";
 import { CountryQuery } from "../../components/ui/Countriees";
+import TouristDestinations from "../topdest/page";
 
 interface Photo {
   id: number;
@@ -27,7 +28,7 @@ interface CountryDetails {
   flags: { png: string };
 }
 
-const Country = () => {
+const Country: React.FC = () => {
   const [photos, setPhotos] = useState<Photo[]>([]);
   const [name, setName] = useState("");
   const [flag, setFlag] = useState("");
@@ -87,6 +88,10 @@ const Country = () => {
   const handleGoBack = () => {
     router.back(); // This function navigates back to the previous page
   };
+  const destinationsFolder = () => {
+    
+    router.push(`/topdest?query=${encodeURIComponent(query)}`);
+  }
 
   return (
     <main className="bg-indigo-100 min-h-screen">
@@ -150,8 +155,8 @@ const Country = () => {
                 <Image
                   src={photo.src.original}
                   alt={photo.photographer}
-                  height="1000"
-                  width="1000"
+                  height={1000}
+                  width={1000}
                   className="h-60 w-full object-cover rounded-xl group-hover/card:shadow-xl"
                 />
                 <div className="mt-2 text-center"></div>
@@ -172,6 +177,15 @@ const Country = () => {
             Go Back
           </button>
         </div>
+      </div>
+      <div className="text-center mt-4">
+      
+        <button
+          className="text-center border w-100% text-black font-extrabold bg-violet-600 p-5 rounded-full border-stone-950 hover:bg-fuchsia-500"
+          onClick={destinationsFolder}
+        >
+          View Top Destinations
+        </button>
       </div>
     </main>
   );
