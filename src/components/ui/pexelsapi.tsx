@@ -5,7 +5,7 @@ dotenv.config();
 
 
 export async function PexelsQuery(Country:String){
-    console.log('env',process.env.PEXELS_API_KEY)
+    
     const response =await axios.get(`https://api.pexels.com/v1/search?query=${Country}`
         , {
             headers: {

@@ -14,7 +14,7 @@ function Navbar() {
             </div  >
             <div className=' flex px-60 text-slate-600 text-opacity-50'>
             <li className='py-5 px-5'> <Link href={'/Home'}>Home</Link></li>
-            <li className='py-5 px-5'><Link href={'/countries'}>Countires</Link></li>
+            <li className='py-5 px-5'><Link href={'/Countryinfo'}>Countires</Link></li>
             <li className='py-5 px-5'><Link href={'/about'}>About</Link></li>
             <li className='py-5 px-5'> <Link href={'/contact'}>Contact Us</Link></li>
           
