@@ -88,62 +88,60 @@ const Country: React.FC = () => {
   const handleGoBack = () => {
     router.back(); // This function navigates back to the previous page
   };
+
   const destinationsFolder = () => {
-    
     router.push(`/topdest?query=${encodeURIComponent(query)}`);
-  }
+  };
 
   return (
     <main className="bg-indigo-100 min-h-screen">
       <Navbar />
-      <div className="text-blue-900 text-5xl font-bold font-serif text-center">
+      <div className="text-blue-900 text-5xl font-bold font-serif text-center mt-10 drop-shadow-lg">
         {name}
       </div>
-      <div>
-        <div className="flex p-4 justify-evenly">
-          <div className="flex bg-white p-4 rounded-md text-3xl font-mono font-bold text-center text-black m-5">
-            <div className="mt-10">Flag :</div>
+      <div className="mt-8">
+        <div className="flex flex-wrap justify-evenly items-center p-4">
+          <div className="bg-white p-6 rounded-lg shadow-xl transform transition-transform duration-300 hover:scale-105 m-5">
+            <div className="text-3xl font-bold mb-4">Flag :</div>
             <Image
               src={flag}
               alt="flag image"
               width={200}
               height={100}
-              className="rounded-lg border ml-8 border-black shadow-sm shadow-slate-400 justify-center m-2"
+              className="rounded-lg border border-black shadow-sm"
             />
           </div>
-          <div className="text-3xl bg-white p-4 rounded-md font-mono m-8 font-bold text-center text-black">
+          <div className="bg-white p-6 rounded-lg shadow-xl transform transition-transform duration-300 hover:scale-105 text-3xl font-bold m-5">
             Capital : {capital}
           </div>
         </div>
-        <div className="flex p-4 justify-evenly">
-          <div className="flex text-3xl bg-white p-4 rounded-md font-mono font-bold text-center text-black mt-8">
-            <div>
-              <div>Currency : {currency}</div>
-              <div className="ml-8">{currencySymbol}</div>
-            </div>
+        <div className="flex flex-wrap justify-evenly items-center p-4">
+          <div className="bg-white p-6 rounded-lg shadow-xl transform transition-transform duration-300 hover:scale-105 text-3xl font-bold m-5">
+            <div>Currency : {currency}</div>
+            <div className="mt-2">{currencySymbol}</div>
           </div>
-          <div className="text-3xl bg-white p-4 rounded-md font-mono m-8 font-bold text-center text-black">
+          <div className="bg-white p-6 rounded-lg shadow-xl transform transition-transform duration-300 hover:scale-105 text-3xl font-bold m-5">
             Languages : {languages.map((language) => (
-              <div key={language}>{language}</div>
+              <div key={language} className="mt-2">{language}</div>
             ))}
           </div>
         </div>
-        <div className="flex p-4 justify-evenly">
-          <div className="text-3xl bg-white p-4 rounded-md font-mono font-bold text-center text-black mt-8">
+        <div className="flex flex-wrap justify-evenly items-center p-4">
+          <div className="bg-white p-6 rounded-lg shadow-xl transform transition-transform duration-300 hover:scale-105 text-3xl font-bold m-5">
             Timezones : {timezones.map((zone) => (
-              <div key={zone}>{zone}</div>
+              <div key={zone} className="mt-2">{zone}</div>
             ))}
           </div>
-          <div className="text-3xl pl-12 bg-white p-4 rounded-md font-mono m-8 font-bold text-center text-black">
+          <div className="bg-white p-6 rounded-lg shadow-xl transform transition-transform duration-300 hover:scale-105 text-3xl font-bold m-5">
             Drive : {drive} hand Drive
           </div>
         </div>
-        <div className="text-3xl bg-white p-4 rounded-md font-mono font-bold text-center text-black mt-8">
+        <div className="bg-white p-6 rounded-lg shadow-xl transform transition-transform duration-300 hover:scale-105 text-3xl font-bold text-center m-5">
           Population : {population}
         </div>
       </div>
       <div>
-        <h1 className="text-center mt-10 text-4xl font-extrabold text-gray-800 opacity-90 py-6 bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 bg-clip-text">
+        <h1 className="text-center mt-10 text-4xl font-extrabold text-gray-800 opacity-90 py-6 bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 bg-clip-text drop-shadow-lg">
           Images
         </h1>
       </div>
@@ -157,31 +155,29 @@ const Country: React.FC = () => {
                   alt={photo.photographer}
                   height={1000}
                   width={1000}
-                  className="h-60 w-full object-cover rounded-xl group-hover/card:shadow-xl"
+                  className="h-60 w-full object-cover rounded-xl shadow-lg transform transition-transform duration-300 hover:scale-105"
                 />
-                <div className="mt-2 text-center"></div>
+                <div className="mt-2 text-center text-gray-700">{photo.photographer}</div>
               </div>
             ))}
-            <div className="text-center"></div>
           </div>
         ) : (
           <p className="text-center text-gray-700 mt-10">
-            No photos found for the query "{query}"
+            No photos found.
           </p>
         )}
-        <div className="text-center">
+        <div className="text-center mt-6">
           <button
-            className="text-center border w-100% text-black font-extrabold bg-violet-600 p-5 rounded-full border-stone-950 hover:bg-fuchsia-500"
+            className="border w-full text-white font-extrabold bg-black py-3 px-6 rounded-md hover:bg-fuchsia-500 transition-colors duration-300 transform transition-transform duration-300 hover:scale-105"
             onClick={handleGoBack}
           >
             Go Back
           </button>
         </div>
       </div>
-      <div className="text-center mt-4">
-      
+      <div className="text-center mt-6">
         <button
-          className="text-center border w-100% text-black font-extrabold bg-violet-600 p-5 rounded-full border-stone-950 hover:bg-fuchsia-500"
+          className="border w-full text-white font-extrabold bg-black py-3 px-6 rounded-md hover:bg-fuchsia-500 transition-colors duration-300 transform transition-transform duration-300 hover:scale-105"
           onClick={destinationsFolder}
         >
           View Top Destinations

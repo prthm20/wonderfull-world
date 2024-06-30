@@ -5,6 +5,7 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import { PexelsQuery } from '@/components/ui/pexelsapi';
 import Image from 'next/image';
 import turn from '../Dest/page2'
+import Navbar from '@/components/ui/Navbar';
 
 interface TouristDestinationsProps {
   query: string;
@@ -55,6 +56,7 @@ const TouristDestinations: React.FC<TouristDestinationsProps> = () => {
 
   return (
     <div className="min-h-screen bg-gray-100">
+      <Navbar></Navbar>
       <div className="max-w-lg mx-auto mt-8 p-4">
         <h1 className="text-4xl font-bold text-center text-gray-900 pb-4">Explore Travel Destinations</h1>
         <form onSubmit={handleSearchSubmit} className="bg-white rounded-lg shadow-lg p-4">
@@ -94,11 +96,11 @@ const TouristDestinations: React.FC<TouristDestinationsProps> = () => {
             ))}
           </div>
         ) : (
-          <p className="text-center text-gray-700 mt-10">No photos found.</p>
+          <p className="text-center text-gray-700 mt-10"></p>
         )}
       </div>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <h2 className="text-3xl font-bold text-gray-800 mb-6">Top Tourist Destinations</h2>
+        <h2 className="text-3xl font-bold text-gray-800 mb-6"></h2>
         <div className="bg-white shadow-md rounded-lg p-6">
           {destinations ? (
             <p className="text-gray-700">{destinations}</p>
