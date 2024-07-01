@@ -2,10 +2,10 @@
 import React, { useState, useEffect, ChangeEvent } from 'react';
 import run from '../Dest/page';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { PexelsQuery } from '@/components/ui/pexelsapi';
+import { PexelsQuery } from '../../components/ui/pexelsapi';
 import Image from 'next/image';
 import turn from '../Dest/page2'
-import Navbar from '@/components/ui/Navbar';
+import Navbar from '../../components/ui/Navbar';
 
 interface TouristDestinationsProps {
   query: string;
