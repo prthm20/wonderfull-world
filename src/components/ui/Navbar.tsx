@@ -16,7 +16,8 @@ function Navbar() {
             <li className='py-5 px-5'> <Link href={'/Home'}>Home</Link></li>
             <li className='py-5 px-5'><Link href={'/Countryinfo'}>Countires</Link></li>
             <li className='py-5 px-5'><Link href={'/about'}>About</Link></li>
-            <li className='py-5 px-5'> <Link href={'/contact'}>Contact Us</Link></li>
+            <li className='py-5 px-5'> <Link href={'/contact'}>Contact</Link></li>
+            <li className='py-5 px-5'> <Link href={'/RoutePlan'}>Plan Route</Link></li>
           
             </div>
         </ul>

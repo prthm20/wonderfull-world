@@ -5,7 +5,7 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import Image from 'next/image';
 
 
-import { Plan } from '../Dest/page3';
+import { Plan } from '../../Apis/Dest/page3';
 import { Divide } from 'lucide-react';
 
 interface TouristDestinationsProps {

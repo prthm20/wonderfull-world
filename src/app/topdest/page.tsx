@@ -1,10 +1,10 @@
 'use client'
 import React, { useState, useEffect, ChangeEvent } from 'react';
-import run from '../Dest/page';
+import run from '../../Apis/Dest/page';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { PexelsQuery } from '../../components/ui/pexelsapi';
+import { PexelsQuery } from '../../Apis/pexelsapi';
 import Image from 'next/image';
-import turn from '../Dest/page2'
+import turn from '../../Apis/Dest/page2'
 import Navbar from '../../components/ui/Navbar';
 
 interface TouristDestinationsProps {

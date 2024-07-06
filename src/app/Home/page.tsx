@@ -1,12 +1,21 @@
-'use client'
+
 import React from 'react'
 import Navbar from '../../components/ui/Navbar'
 
+import MyApp  from '../../components/ui/SessionProvider'
 import { InfiniteMovingCardsDemo } from '../../components/ui/Testimonials'
 import Foter from '../../components/ui/Foter'
 import { ThreeDCardDemo } from '../../components/ui/Category'
+import Component from '../../components/ui/loginbtn'
+import { connect } from '../../dbconfig/dbconfig'
+import UserModel from '../../../model/User'
 
-function page() {
+
+
+async function page() {
+  await connect()
+  const user= await UserModel.create({email:"ratham",password:"12345",googelId:"xyz",name:"Pratham"})
+  //console.log(user)
   return (
     <div>
     
@@ -32,7 +41,12 @@ function page() {
       </InfiniteMovingCardsDemo>
     </div>
     
+<div>
+  
 
+  
+  
+</div>
     
     
    
@@ -46,5 +60,7 @@ function page() {
      
   )
 }
+
+
 
 export default page

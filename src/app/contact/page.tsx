@@ -1,9 +1,9 @@
 'use client'
 import React from 'react'
-import { cn } from '@/lib/utils'
+import { cn } from '../../lib/utils'
 import axios from 'axios'
-import Foter from '@/components/ui/Foter'
-import Navbar from '@/components/ui/Navbar'
+import Foter from '../../components/ui/Foter'
+import Navbar from '../../components/ui/Navbar'
 
 function Page() {
   const [user, setUser] = React.useState({

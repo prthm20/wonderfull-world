@@ -1,81 +1,50 @@
-import axios from "axios";
-'use client';
-import React, { ChangeEvent, useState, useEffect } from 'react';
-import Country from '../countries/page';
-import { useRouter } from 'next/navigation';
-import Navbar from '../../components/ui/Navbar';
-import { CountryNames } from '../../components/ui/CountryNames';
-
-interface CountryName {
-    name: {
-        common: string;
-    };
-}
+'use client'
+import React, { useState } from 'react'
+import { useRouter } from 'next/navigation'
+import Navbar from '../../components/ui/Navbar'
+import { ComboboxDemo } from '../../components/ui/combobox'
 
 function Page() {
-    const [searchQuery, setSearchQuery] = useState('');
-    const [names, setNames] = useState<string[]>([]);
-    const router = useRouter();
+    const [searchQuery, setSearchQuery] = useState('')
+    const [selectedCountry, setSelectedCountry] = useState('')
+    
+    const router = useRouter()
 
-    const handleSearchChange = (e: ChangeEvent<HTMLInputElement>) => {
-        setSearchQuery(e.target.value);
-    };
+    const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setSearchQuery(e.target.value)
+    }
 
-    const fetchNames = async () => {
-        try {
-            const CountriesAll: CountryName[] = await CountryNames();
-            console.log(CountriesAll);
-            let arr: string[] = [];
-            for (let i = 0; i < CountriesAll.length; i++) {
-                arr.push(CountriesAll[i].name.common);
-            }
-            setNames(arr);
-        } catch (error) {
-            console.error("Error fetching Country details:", error);
-        }
-    };
+    const handleSearchSubmit = (e: React.FormEvent<HTMLFormElement>|any) => {
+        e.preventDefault()
+        const query = selectedCountry || searchQuery
+        router.push(`/countries/?query=${encodeURIComponent(query)}`)
+        console.log(query)
+    }
 
-    useEffect(() => {
-        fetchNames();
-    }, []);
-
-    const handleSearchSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-        router.push(`/countries?query=${encodeURIComponent(searchQuery)}`);
-        console.log(searchQuery);
-    };
+    const handleSelectCountry = (country: string) => {
+        setSelectedCountry(country)
+    }
 
     return (
-        <>
-        
-            <Navbar />
-        <div className='bg-gray-100 min-h-screen'>
-            <div className="max-w-lg mx-auto mt-8 p-4">
-                <h1 className="text-3xl font-bold text-center pb-3 text-gray-900">Explore Travel Destinations</h1>
-                <form onSubmit={handleSearchSubmit} className="mt-6">
-                    <div className="flex items-center bg-gray-100 rounded-lg shadow-md p-4">
-                        <input
-                            type="text"
-                            value={searchQuery}
-                            onChange={handleSearchChange}
-                            placeholder="Search for travel destinations..."
-                            className="flex-grow px-4 py-2 border-none rounded-l-lg focus:outline-none focus:ring-2 focus:ring-neutral-700"
-                        />
-                        <button
-                            type="submit"
-                            className="text-center text-white font-extrabold bg-violet-600 py-2 px-6 rounded-r-lg border-none hover:bg-fuchsia-500 transition-colors duration-300"
-                        >
-                            Search
-                        </button>
-                    </div>
-                </form>
-            </div>
-            <div className='mt-4'>
-                {/* This div can be used for additional content */}
-            </div>
-        </div>
-        </>
-    );
+        <div className='min-h-screen bg-indigo-100'>
+  <Navbar />
+  <div className='flex flex-col items-center justify-center p-10'>
+    <div className='w-full max-w-md p-10 mb-10 mt-10 bg-white rounded-lg shadow-lg'>
+      <ComboboxDemo onSelectCountry={handleSelectCountry} />
+    </div>
+    <div className='mt-10 pt-2'>
+      <button
+        type="submit"
+        className="text-center mt-6 text-white font-extrabold bg-fuchsia-500 p-5 rounded-full border-2 border-fuchsia-500 shadow-lg transform transition duration-300 ease-in-out hover:bg-violet-300 hover:text-black hover:scale-105 hover:border-violet-300"
+        onClick={handleSearchSubmit}
+      >
+        Search
+      </button>
+    </div>
+  </div>
+</div>
+
+    )
 }
 
-export default Page;
+export default Page

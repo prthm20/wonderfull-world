@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import Image from "next/image";
-import { PexelsQuery } from "../../components/ui/pexelsapi";
+import { PexelsQuery } from "../../Apis/pexelsapi";
 import Navbar from "../../components/ui/Navbar";
 import { CountryQuery } from "../../components/ui/Countriees";
 import TouristDestinations from "../topdest/page";
@@ -168,7 +168,7 @@ const Country: React.FC = () => {
         )}
         <div className="text-center mt-6">
           <button
-            className="border w-full text-white font-extrabold bg-black py-3 px-6 rounded-md hover:bg-fuchsia-500 transition-colors duration-300 transform transition-transform duration-300 hover:scale-105"
+            className="border w-full text-white font-extrabold bg-black py-3 px-6 rounded-md hover:bg-fuchsia-500 transition-colors duration-300 transform hover:scale-105"
             onClick={handleGoBack}
           >
             Go Back
@@ -177,7 +177,7 @@ const Country: React.FC = () => {
       </div>
       <div className="text-center mt-6">
         <button
-          className="border w-full text-white font-extrabold bg-black py-3 px-6 rounded-md hover:bg-fuchsia-500 transition-colors duration-300 transform transition-transform duration-300 hover:scale-105"
+          className="border w-full text-white font-extrabold bg-black py-3 px-6 rounded-md hover:bg-fuchsia-500 transform transition-transform duration-300 hover:scale-105"
           onClick={destinationsFolder}
         >
           View Top Destinations
