@@ -1,8 +1,13 @@
 import Foter from '../../components/ui/Foter';
 import Navbar from '../../components/ui/Navbar';
+import {connect} from '../../dbconfig/dbconfig'
+import UserModel from '../../../model/User'
 import React from 'react';
 
-const AboutUsPage = () => {
+async function AboutUsPage ()  {
+  await connect()
+
+
   return (
     <>
    <div>

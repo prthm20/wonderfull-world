@@ -1,7 +1,10 @@
 import mongoose, { connection } from "mongoose";
 
 export async function connect() {
-
+    if (mongoose.connection.readyState >= 1) {
+        return;
+      }
+    
     try {
         mongoose.connect('mongodb+srv://prathammm:prathamm@cluster0.pjvn3ov.mongodb.net/Wonderfull-world')
         connection.on('connected',()=>{

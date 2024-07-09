@@ -1,6 +1,15 @@
-import mongoose from 'mongoose'
+import { connect } from '../src/dbconfig/dbconfig';
+import mongoose, { Schema , Document } from 'mongoose';
 
-const UserSchema = new mongoose.Schema({
+
+
+export interface User extends Document {
+  email: string;
+  name: string;
+    password: string;
+  }
+const UserSchema: Schema<User> = new mongoose.Schema({
+  
   email: {
     type: String,
     required: true,
@@ -14,12 +23,10 @@ const UserSchema = new mongoose.Schema({
   type:String,
   
  },
- googleId:{
-  type:String
- }
+ 
 })
 
 // Use existing model if it exists, otherwise create a new model
-const UserModel =mongoose.models.travlog || mongoose.model('travlog', UserSchema)
+const UserModel =(mongoose.models?.travlog as mongoose.Model<User>) ||mongoose.model<User>('travlog', UserSchema)
 
 export default UserModel

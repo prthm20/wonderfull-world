@@ -2,7 +2,7 @@
 import React from 'react'
 import Navbar from '../../components/ui/Navbar'
 
-import MyApp  from '../../components/ui/SessionProvider'
+
 import { InfiniteMovingCardsDemo } from '../../components/ui/Testimonials'
 import Foter from '../../components/ui/Foter'
 import { ThreeDCardDemo } from '../../components/ui/Category'
@@ -13,9 +13,7 @@ import UserModel from '../../../model/User'
 
 
 async function page() {
-  await connect()
-  const user= await UserModel.create({email:"ratham",password:"12345",googelId:"xyz",name:"Pratham"})
-  //console.log(user)
+  
   return (
     <div>
     
