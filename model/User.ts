@@ -6,7 +6,8 @@ import mongoose, { Schema , Document } from 'mongoose';
 export interface User extends Document {
   email: string;
   name: string;
-    password: string;
+  password: string;
+  googleId:string
   }
 const UserSchema: Schema<User> = new mongoose.Schema({
   
@@ -23,6 +24,9 @@ const UserSchema: Schema<User> = new mongoose.Schema({
   type:String,
   
  },
+ googleId:{
+  typte:String
+ }
  
 })
 

@@ -3,14 +3,17 @@
 import Image from "next/image";
 import React from "react";
 import { CardBody, CardContainer, CardItem } from "./ui/3d-card";
+import Link from "next/link";
 interface cardprop{
   title:string
   sourc:string
+  query:string
 
 }
 
-const ThreeDCardDemo:React.FC<cardprop>=({title,sourc})=> {
+const ThreeDCardDemo:React.FC<cardprop>=({title,sourc,query})=> {
   return (
+      <Link href={`/topdest?query=${encodeURIComponent(query)}`}>
     <CardContainer className="inter-var w-96 h-96  px-5 ">
       <CardBody className="bg-gray-50 relative group/card  dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1]  sm:w-[30rem]  rounded-xl p-6 border  ">
         <CardItem
@@ -60,6 +63,7 @@ const ThreeDCardDemo:React.FC<cardprop>=({title,sourc})=> {
         </div>
       </CardBody>
     </CardContainer>
+      </Link>
   );
 }
 export { ThreeDCardDemo}

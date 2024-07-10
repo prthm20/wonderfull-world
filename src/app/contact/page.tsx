@@ -4,6 +4,7 @@ import { cn } from '../../lib/utils'
 import axios from 'axios'
 import Foter from '../../components/ui/Foter'
 import Navbar from '../../components/ui/Navbar'
+import { Input } from "../../components/ui/input";
 
 function Page() {
   const [user, setUser] = React.useState({
@@ -15,10 +16,10 @@ function Page() {
   const onEmail = async (e: React.FormEvent) => {
     e.preventDefault()
     try {
-      const response = await axios.post("/api/Contact-me", user)
-      console.log(response.data)
+      const response = await axios.post("/api/send",user)
+      console.log(response)
     } catch (error: any) {
-      console.log("Enable to send email", error.message)
+      console.log("unable to send email", error)
     }
   }
 
@@ -32,9 +33,9 @@ function Page() {
 
       <form className="w-full max-w-lg bg-white p-8 rounded-lg shadow-lg" onSubmit={onEmail}>
         <div className="mb-4">
-          <LabelInputContainer>
+          
             <label htmlFor="name" className="block text-gray-700 text-sm font-bold mb-2">Your Name</label>
-            <input 
+            <Input 
               id="name" 
               type="text" 
               placeholder="Your Name" 
@@ -42,12 +43,12 @@ function Page() {
               onChange={(e) => setUser({ ...user, name: e.target.value })} 
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             />
-          </LabelInputContainer>
+          
         </div>
         <div className="mb-4">
-          <LabelInputContainer>
+        
             <label htmlFor="email" className="block text-gray-700 text-sm font-bold mb-2">Email Address</label>
-            <input 
+            <Input 
               id="email" 
               type="email" 
               placeholder="Email id" 
@@ -55,10 +56,10 @@ function Page() {
               onChange={(e) => setUser({ ...user, email: e.target.value })} 
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             />
-          </LabelInputContainer>
+         
         </div>
         <div className="mb-4">
-          <LabelInputContainer>
+         
             <label htmlFor="message" className="block text-gray-700 text-sm font-bold mb-2">Message</label>
             <textarea 
               id="message" 
@@ -67,7 +68,7 @@ function Page() {
               onChange={(e) => setUser({ ...user, message: e.target.value })} 
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline h-40 resize-y"
             />
-          </LabelInputContainer>
+         
         </div>
         <div className="flex items-center justify-center">
           <button 

@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { cn } from "../../../lib/utils";
 import React, { useEffect, useState } from "react";
 
@@ -15,6 +16,7 @@ export const InfiniteMovingCards = ({
     name: string;
     title: string;
     sourc:string;
+    query:string
   }[];
   direction?: "left" | "right";
   speed?: "fast" | "normal" | "slow";
@@ -105,6 +107,7 @@ export const InfiniteMovingCards = ({
               <span className=" relative z-20 text-sm leading-[1.6] text-gray-100 font-normal">
                 {item.quote}
               </span>
+              <Link href={`/countries/?query=${encodeURIComponent(item.query)}`}>
               <div className="relative z-20 mt-6 flex flex-row items-center">
                 <span className="flex flex-col gap-1">
                   <span className=" text-sm leading-[1.6] text-gray-400 font-normal">
@@ -120,6 +123,7 @@ export const InfiniteMovingCards = ({
 
                 </span>
               </div>
+        </Link>
             </blockquote>
           </li>
         ))}

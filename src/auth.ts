@@ -41,8 +41,7 @@ export const { handlers, signIn, signOut, auth }= NextAuth({
                   } else {
                     
                     return null
-                    
-                    
+                    console.log("user not found")
                   }
                 
               
@@ -56,7 +55,29 @@ export const { handlers, signIn, signOut, auth }= NextAuth({
         })
        
 
-    ]
+    ],
+    callbacks:{
+      async signIn({ user, account, profile, email, credentials }) {
+        if(account?.provider=="google"){
+          await connect()
+          try {
+
+            const {name,email,id}=user
+            const islogin=await UserModel.findOne({email})
+            if(!islogin){
+              console.log('no signedup')
+              const reg=await UserModel.create({name,email,googleId:id})
+            }
+            return true
+          }
+          catch (error) {
+            console.log(error)
+            
+          }
+        }
+          return false
+      },
+    }
 
     
 })

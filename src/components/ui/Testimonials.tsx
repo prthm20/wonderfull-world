@@ -24,26 +24,30 @@ const Categories = [
     
     name: "",
     title: "Japan",
-     sourc:"https://images.pexels.com/photos/1440476/pexels-photo-1440476.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+     sourc:"https://images.pexels.com/photos/1440476/pexels-photo-1440476.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    query:"japan"
   },
      {
     quote: "",
     name: "",
     title: "India",
-     sourc:"https://images.pexels.com/photos/3574440/pexels-photo-3574440.jpeg?auto=compress&cs=tinysrgb&w=600"
+     sourc:"https://images.pexels.com/photos/3574440/pexels-photo-3574440.jpeg?auto=compress&cs=tinysrgb&w=600",
+     query:"India"
   },
   {
     quote:
       "",
     name: "Ice Land",
     title: "",
-     sourc:"https://images.pexels.com/photos/831061/pexels-photo-831061.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+     sourc:"https://images.pexels.com/photos/831061/pexels-photo-831061.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+     query:"Iceland"
   },
   {
     quote:
       "",
     name: "",
     title: "Nepal",
-     sourc:"https://images.pexels.com/photos/3027138/pexels-photo-3027138.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+     sourc:"https://images.pexels.com/photos/3027138/pexels-photo-3027138.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+     query:"Nepal"
   },
 ];

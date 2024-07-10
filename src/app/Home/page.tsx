@@ -6,13 +6,19 @@ import Navbar from '../../components/ui/Navbar'
 import { InfiniteMovingCardsDemo } from '../../components/ui/Testimonials'
 import Foter from '../../components/ui/Foter'
 import { ThreeDCardDemo } from '../../components/ui/Category'
-import Component from '../../components/ui/loginbtn'
+
 import { connect } from '../../dbconfig/dbconfig'
 import UserModel from '../../../model/User'
-
+import Link from 'next/link'
+import { useSearchParams, useRouter } from "next/navigation";
 
 
 async function page() {
+ /* const handle:any=(query: string)=>{
+    const router=useRouter()
+
+    router.push(`/topdest?query=${encodeURIComponent(query)}`)
+  }*/
   
   return (
     <div>
@@ -23,11 +29,11 @@ async function page() {
      </div>
      <div className=' text-center  text-2xl text-bold font-sans opacity-70'><h1>Categories</h1></div>
     <div className='flex  '>
-        
-       <ThreeDCardDemo title="Religious" sourc='https://images.pexels.com/photos/415708/pexels-photo-415708.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'></ThreeDCardDemo>
-       <ThreeDCardDemo title="Tourist" sourc='https://images.pexels.com/photos/161183/thailand-monks-temple-tourism-161183.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'></ThreeDCardDemo>
-       <ThreeDCardDemo title="Nature" sourc='https://images.pexels.com/photos/235731/pexels-photo-235731.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'></ThreeDCardDemo>
-       <ThreeDCardDemo title="Wonders of world" sourc='https://images.pexels.com/photos/10980106/pexels-photo-10980106.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'></ThreeDCardDemo>
+  
+      <div><ThreeDCardDemo  title="Religious" sourc='https://images.pexels.com/photos/415708/pexels-photo-415708.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1' query='all religion all over world' ></ThreeDCardDemo></div> 
+       <ThreeDCardDemo title="Tourist" sourc='https://images.pexels.com/photos/161183/thailand-monks-temple-tourism-161183.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1' query='Top tourist places'></ThreeDCardDemo>
+       <ThreeDCardDemo title="Nature" sourc='https://images.pexels.com/photos/235731/pexels-photo-235731.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1' query='Nature'></ThreeDCardDemo>
+       <ThreeDCardDemo title="Wonders of world" sourc='https://images.pexels.com/photos/10980106/pexels-photo-10980106.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1' query='wonders of world'></ThreeDCardDemo>
       </div> 
     
 <div className='p-5'>
