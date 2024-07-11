@@ -166,18 +166,21 @@ const Country: React.FC = () => {
             No photos found.
           </p>
         )}
-        <div className="text-center mt-6">
+     
+
+        <div className="text-center mt-6 h-10 mr-11">
           <button
-            className="border w-full text-white font-extrabold bg-black py-3 px-6 rounded-md hover:bg-fuchsia-500 transition-colors duration-300 transform hover:scale-105"
+            className="border w-full text-white font-extrabold bg-black py-3 px-6 rounded-md hover:bg-slate-600  transition-colors duration-300 transform hover:scale-105"
             onClick={handleGoBack}
-          >
+            >
             Go Back
           </button>
         </div>
+           
       </div>
       <div className="text-center mt-6">
         <button
-          className="border w-full text-white font-extrabold bg-black py-3 px-6 rounded-md hover:bg-fuchsia-500 transform transition-transform duration-300 hover:scale-105"
+          className="border w-full text-white font-extrabold bg-black py-3 px-6 rounded-md hover:bg-slate-600 transform transition-transform duration-300 hover:scale-105"
           onClick={destinationsFolder}
         >
           View Top Destinations

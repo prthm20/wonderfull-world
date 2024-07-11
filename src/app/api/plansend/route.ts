@@ -1,7 +1,7 @@
 import { Resend } from 'resend';
 import { NextRequest,NextResponse } from 'next/server';
 import PlanEmailTemplate from '../../../components/ui/plan-email-template';
-import { act } from 'react';
+
 
 const resend = new Resend("re_E298rGcC_3qu5aEQv6pUQ3K3DPkNr9can");
 
