@@ -1,7 +1,7 @@
 import Foter from '../../components/ui/Foter';
 import Navbar from '../../components/ui/Navbar';
 import {connect} from '../../dbconfig/dbconfig'
-import UserModel from '../../../model/User'
+import UserModel from '../../model/User'
 import React from 'react';
 
 async function AboutUsPage ()  {

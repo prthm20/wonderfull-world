@@ -8,7 +8,7 @@ import {
     CardHeader,
     CardTitle,
 } from "../../components/ui/card"
-import UserModel from '../../../model/User'
+import UserModel from '../../model/User'
 import { connect } from '../../dbconfig/dbconfig'
 import Link from 'next/link'
 

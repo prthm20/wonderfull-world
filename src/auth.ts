@@ -3,7 +3,7 @@ import GoogleProvider from 'next-auth/providers/google'
 import CredentialsProvider from "next-auth/providers/credentials";
 
 import {connect} from './dbconfig/dbconfig'
-import UserModel from '../model/User'
+import UserModel from './model/User'
 import Credentials from "next-auth/providers/credentials"
 import { User } from 'lucide-react';
 

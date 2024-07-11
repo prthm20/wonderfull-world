@@ -8,7 +8,7 @@ import Foter from '../../components/ui/Foter'
 import { ThreeDCardDemo } from '../../components/ui/Category'
 
 import { connect } from '../../dbconfig/dbconfig'
-import UserModel from '../../../model/User'
+import UserModel from '../../model/User'
 import Link from 'next/link'
 import { useSearchParams, useRouter } from "next/navigation";
 
