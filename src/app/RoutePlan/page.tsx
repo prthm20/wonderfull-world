@@ -50,11 +50,12 @@ interface Transportation {
 
 interface PlanDetails {
   Details:{
-  Accommodation: Accommodation[];
-  Activities: Activity[];
-  Budget: Budget;
-  PackingList: string[];
-  Transportation: Transportation[];}
+    Accommodation: Accommodation[];
+    Activities: Activity[];
+    Budget: Budget;
+    PackingList: string[];
+    Transportation: Transportation[];
+  }
 }
 
 const Route: React.FC = () => {
@@ -87,7 +88,6 @@ const Route: React.FC = () => {
     e.preventDefault();
     const daysNumber = parseInt(days as string, 10); // Convert days to a number
     const data: PlanDetails = await Plan(start, end, date, daysNumber);
-    console.log(data)
     
     setAccommodation(data.Details.Accommodation[0]);
     setActivities(data.Details.Activities);
@@ -117,7 +117,6 @@ const Route: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-r pt-20 from-indigo-200 via-purple-200 to-pink-200">
-      
       <div className="max-w-screen mx-auto mt-16 p-6 bg-white rounded-lg shadow-lg">
         <h1 className="text-5xl font-extrabold text-center text-gray-900 mb-8">Plan Your Trip</h1>
         <form onSubmit={handleSearchSubmit} className="space-y-6">
@@ -172,9 +171,9 @@ const Route: React.FC = () => {
                 onClick={onPlanSendClick}
                 className="w-full py-4 bg-gradient-to-r from-violet-500 to-fuchsia-500 text-white font-bold rounded-lg shadow-lg hover:bg-gradient-to-l hover:from-fuchsia-500 hover:to-violet-500 transition-all duration-300"
               >
-               Get Plan On your Email  
-               <div>
-               Lets Go &rarr;
+                Get Plan On your Email
+                <div>
+                  Lets Go &rarr;
                 </div>
               </button>
               <div>
@@ -204,80 +203,99 @@ const Route: React.FC = () => {
                   </div>
                 ) : null}
               </div>
-            </div>
 
-            {/* Rendering the plan details */}
-            <div className="mt-8">
-              <h2 className="text-2xl font-bold text-gray-800 mb-4">Accommodation</h2>
-              {accommodation ? (
-                <>
-                  <p>Check In Date: {accommodation.CheckInDate}</p>
-                  <p>Check Out Date: {accommodation.CheckOutDate}</p>
-                  <p>Info: {accommodation.AdditionalInfo}</p>
-                  <p>Name of place: {accommodation.Name}</p>
-                  <p>Address: {accommodation.Address}</p>
-                  <p>Type: {accommodation.Type}</p>
-                  <p>Contact info: {accommodation.ContactInfo}</p>
-                  <p>Cost Per Night: {accommodation.CostPerNight}</p>
-                  <p>Total Stay Cost: {accommodation.TotalCost}</p>
-                </>
-              ) : null}
+              {/* Rendering the plan details */}
+              <div className="mt-8">
+                <h2 className="text-2xl font-bold text-gray-800 mb-4">Accommodation</h2>
+                {accommodation ? (
+                  <>
+                    <p>Check In Date: {accommodation.CheckInDate}</p>
+                    <p>Check Out Date: {accommodation.CheckOutDate}</p>
+                    <p>Info: {accommodation.AdditionalInfo}</p>
+                    <p>Name of place: {accommodation.Name}</p>
+                    <p>Address: {accommodation.Address}</p>
+                    <p>Additional information about place: {accommodation.ContactInfo}</p>
+                    <p>Cost per night: {accommodation.CostPerNight}</p>
+                    <p>Total: {accommodation.TotalCost}</p>
+                  </>
+                ) : (
+                  <p>No accommodation details available</p>
+                )}
+              </div>
 
-              <h2 className="text-2xl font-bold text-gray-800 mb-4 mt-8">Transportation</h2>
-              {transportation.map((trans, index) => (
-                <div key={index} className="mb-4">
-                  <h3 className="text-xl font-semibold">{trans.Mode}</h3>
-                  <p>Info: {trans.Details.AdditionalInfo}</p>
-                  <p>Departure Location: {trans.Details.DepartureLocation}</p>
-                  <p>Departure Time: {trans.Details.DepartureTime}</p>
-                  <p>Duration: {trans.Details.Duration}</p>
-                  <p>Booking: {trans.Details.Booking}</p>
-                  <p>Arrival Location: {trans.Details.ArrivalLocation}</p>
-                  <p>Arrival Time: {trans.Details.ArrivalTime}</p>
-                  <p>Cost: {trans.Details.Cost} {budget?.Currency}</p>
-                </div>
-              ))}
+              <div className="mt-8">
+                <h2 className="text-2xl font-bold text-gray-800 mb-4">Activities</h2>
+                {activities.length > 0 ? (
+                  activities.map((activity, index) => (
+                    <div key={index} className="mb-4">
+                      <p>Name: {activity.Name}</p>
+                      <p>Additional Info: {activity.AdditionalInfo}</p>
+                      <p>Booking: {activity.Booking}</p>
+                      <p>Cost: {activity.Cost}</p>
+                      <p>Time: {activity.Time}</p>
+                      <p>Location: {activity.Location}</p>
+                    </div>
+                  ))
+                ) : (
+                  <p>No activities planned</p>
+                )}
+              </div>
 
-              <h2 className="text-2xl font-bold text-gray-800 mb-4 mt-8">Budget</h2>
-              {budget ? (
-                <>
-                  <p>Currency: {budget.Currency}</p>
-                  <p>Total trip Cost: {budget.TotalCost}</p>
-                  <p>Flight Cost: {budget.FlightCost}</p>
-                  <p>Accommodation Cost: {budget.AccommodationCost}</p>
-                  <p>Food Cost: {budget.FoodCost}</p>
-                  <p>Activities Cost: {budget.ActivitiesCost}</p>
-                </>
-              ) : null}
+              <div className="mt-8">
+                <h2 className="text-2xl font-bold text-gray-800 mb-4">Budget</h2>
+                {budget ? (
+                  <>
+                    <p>Currency: {budget.Currency}</p>
+                    <p>Total Cost: {budget.TotalCost}</p>
+                    <p>Flight Cost: {budget.FlightCost}</p>
+                    <p>Accommodation Cost: {budget.AccommodationCost}</p>
+                    <p>Food Cost: {budget.FoodCost}</p>
+                    <p>Activities Cost: {budget.ActivitiesCost}</p>
+                  </>
+                ) : (
+                  <p>No budget details available</p>
+                )}
+              </div>
 
-              <h2 className="text-2xl font-bold text-gray-800 mb-4 mt-8">Activities</h2>
-              {activities.map((activity, index) => (
-                <div key={index} className="mb-4">
-                  <h3 className="text-xl font-semibold">{activity.Name}</h3>
-                  <p>Info: {activity.AdditionalInfo}</p>
-                  <p>Booking: {activity.Booking}</p>
-                  <p>Cost: {activity.Cost} {budget?.Currency}</p>
-                  <p>Start Time: {activity.Time}</p>
-                  <p>Location: {activity.Location}</p>
-                </div>
-              ))}
+              <div className="mt-8">
+                <h2 className="text-2xl font-bold text-gray-800 mb-4">Packing List</h2>
+                {packingList.length > 0 ? (
+                  <ul>
+                    {packingList.map((item, index) => (
+                      <li key={index}>{item}</li>
+                    ))}
+                  </ul>
+                ) : (
+                  <p>No packing list available</p>
+                )}
+              </div>
 
-              <h2 className="text-2xl font-bold text-gray-800 mb-4 mt-8">Packing List</h2>
-              <ul className="list-disc pl-5">
-                {packingList.map((item, index) => (
-                  <li key={index}>{item}</li>
-                ))}
-              </ul>
+              <div className="mt-8">
+                <h2 className="text-2xl font-bold text-gray-800 mb-4">Transportation</h2>
+                {transportation.length > 0 ? (
+                  transportation.map((transport, index) => (
+                    <div key={index} className="mb-4">
+                      <p>Mode: {transport.Mode}</p>
+                      <p>Additional Info: {transport.Details.AdditionalInfo}</p>
+                      <p>Departure Location: {transport.Details.DepartureLocation}</p>
+                      <p>Departure Time: {transport.Details.DepartureTime}</p>
+                      <p>Duration: {transport.Details.Duration}</p>
+                      <p>Booking: {transport.Details.Booking}</p>
+                      <p>Arrival Location: {transport.Details.ArrivalLocation}</p>
+                      <p>Arrival Time: {transport.Details.ArrivalTime}</p>
+                      <p>Cost: {transport.Details.Cost}</p>
+                    </div>
+                  ))
+                ) : (
+                  <p>No transportation details available</p>
+                )}
+              </div>
             </div>
           </div>
-        ) : (
-          <div className="text-black-700 text-center text-xl font-semibold">
-            Creating your trip plan...
-          </div>
-        )}
+        ) : null}
       </div>
     </div>
   );
-}
+};
 
 export default Route;
