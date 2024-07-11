@@ -19,10 +19,10 @@ export const { handlers, signIn, signOut, auth }= NextAuth({
         CredentialsProvider({
             name: "Credentials",
             credentials: {
-              username: { label: "Username", type: "text", placeholder: "jsmith" },
-              password: { label: "Password", type: "text" },
-              email: { label: "email", type: "email" },
-              name:{label:"name",type:"text"}
+              username: { label: "Username", type: "text", placeholder: "username" },
+              name:{label:"name",type:"text",placeholder:"your name"},
+              email: { label: "email", type: "email",placeholder:"email" },
+              password: { label: "Password", type: "text",placeholder:"password"},
             },
             
            async authorize(credentials):Promise<any>{

@@ -17,10 +17,18 @@ function Navbar() {
             <li className='py-5 px-5'><Link href={'/Countryinfo'}>Countires</Link></li>
             <li className='py-5 px-5'><Link href={'/about'}>About</Link></li>
             <li className='py-5 px-5'> <Link href={'/contact'}>Contact</Link></li>
-            <li className='py-5 px-5'> <Link href={'/RoutePlan'}>Plan Route</Link></li>
+            <li className='py-5 px-0s'> <Link href={'/RoutePlan'}>PlanRoute</Link></li>
+            <li className='py-5 px-5'>  <Link  className="px-4 py-2 rounded-xl bg-black dark:bg-white dark:text-black text-white text-xs font-bold" href={'/sign-up'}>Signup</Link></li>
           
             </div>
         </ul>
+        <span>
+
+            <div>
+
+           
+            </div>
+        </span>
       </nav>
       
     </div>

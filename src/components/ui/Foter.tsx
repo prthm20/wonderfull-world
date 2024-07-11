@@ -1,5 +1,18 @@
 'use client'
 import React from 'react';
+import Link from 'next/link';
+import { Avatar, AvatarFallback, AvatarImage } from "./avatar"
+import {
+  IconBrandGithub,
+  IconBrandGoogle,
+  Icon3dCubeSphere,
+  IconBrandX,
+  IconBrandGmail,
+  IconBrandInstagram,
+  IconBrandLinkedin,
+  IconPhoneCall,
+  IconLocation
+} from "@tabler/icons-react";
 
 const Foter = () => {
   return (
@@ -11,16 +24,16 @@ const Foter = () => {
             <h5 className="font-bold text-lg mb-2">Quick Links</h5>
             <ul className="list-none">
               <li className="mb-1">
-                <a href="#" className="hover:text-gray-300">Home</a>
+              <Link href={'/Home'}>Home</Link>
               </li>
               <li className="mb-1">
-                <a href="#" className="hover:text-gray-300">Countries</a>
+              <Link href={'/Countryinfo'}>Countires</Link>
               </li>
               <li className="mb-1">
-                <a href="#" className="hover:text-gray-300">About</a>
+              <Link href={'/about'}>About</Link>
               </li>
               <li className="mb-1">
-                <a href="#" className="hover:text-gray-300">Contact Us</a>
+              <Link href={'/contact'}>Contact Us</Link>
               </li>
             </ul>
           </div>
@@ -28,56 +41,22 @@ const Foter = () => {
           {/* Right section */}
           <div>
             <h5 className="font-bold text-lg mb-2">Contact Information</h5>
-            <p className="mb-2">123 Street Name, City</p>
-            <p className="mb-2">Email: contact@example.com</p>
-            <p className="mb-2">Phone: +1234567890</p>
+            <p className="mb-2">Pune,India</p>
+            <p className="mb-2">aprathamm@gmail.com</p>
+            <p className="mb-2">Phone: +91 7387198268</p>
 
             {/* Social icons */}
             <div className="flex space-x-4 mt-4">
-              <a href="#" className="text-gray-300 hover:text-white">
-                <svg
-                  className="w-6 h-6"
-                  fill="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    fillRule="evenodd"
-                    clipRule="evenodd"
-                    d="M12 2C6.477 2 2 6.477 2 12c0 4.976 3.854 9.071 8.75 9.923v-7.002H7.856V12h2.894V9.77c0-2.864 1.711-4.448 4.327-4.448 1.252 0 2.624.224 2.624.224v2.893h-1.478c-1.457 0-1.913.9-1.913 1.828V12h3.258l-.523 3.92h-2.735v7.003C18.146 21.072 22 16.977 22 12c0-5.523-4.477-10-10-10z"
-                  />
-                </svg>
-              </a>
-              <a href="#" className="text-gray-300 hover:text-white">
-                <svg
-                  className="w-6 h-6"
-                  fill="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    fillRule="evenodd"
-                    clipRule="evenodd"
-                    d="M12 2C6.477 2 2 6.477 2 12c0 4.976 3.854 9.071 8.75 9.923v-7.002H7.856V12h2.894V9.77c0-2.864 1.711-4.448 4.327-4.448 1.252 0 2.624.224 2.624.224v2.893h-1.478c-1.457 0-1.913.9-1.913 1.828V12h3.258l-.523 3.92h-2.735v7.003C18.146 21.072 22 16.977 22 12c0-5.523-4.477-10-10-10z"
-                  />
-                </svg>
-              </a>
-              <a href="#" className="text-gray-300 hover:text-white">
-                <svg
-                  className="w-6 h-6"
-                  fill="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    fillRule="evenodd"
-                    clipRule="evenodd"
-                    d="M12 2C6.477 2 2 6.477 2 12c0 4.976 3.854 9.071 8.75 9.923v-7.002H7.856V12h2.894V9.77c0-2.864 1.711-4.448 4.327-4.448 1.252 0 2.624.224 2.624.224v2.893h-1.478c-1.457 0-1.913.9-1.913 1.828V12h3.258l-.523 3.92h-2.735v7.003C18.146 21.072 22 16.977 22 12c0-5.523-4.477-10-10-10z"
-                  />
-                </svg>
-              </a>
+              
+              <Link href={"https://x.com/PrathamAngdlwar"}>< IconBrandX/></Link>
+             
+              
+              <Link href={"https://www.instagram.com/prthm2004/"}><IconBrandInstagram/></Link>
+              
+               <Link href={"https://github.com/prthm20"}><IconBrandGithub/></Link>
+             
             </div>
-          </div>
+          </div> 
         </div>
       </div>
     </footer>
