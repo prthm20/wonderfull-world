@@ -5,7 +5,7 @@ import UserModel from '../../model/User'
 import React from 'react';
 
 async function AboutUsPage ()  {
-  await connect()
+
 
 
   return (

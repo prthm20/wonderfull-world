@@ -1,5 +1,6 @@
 import React from 'react'
 import { Input } from "../../components/ui/input"
+import type { NextApiRequest, NextApiResponse } from 'next';
 import {
     Card,
     CardContent,
@@ -11,8 +12,11 @@ import {
 import UserModel from '../../model/User'
 import { connect } from '../../dbconfig/dbconfig'
 import Link from 'next/link'
+import handler from '@/Apis/connect-db'
 
 function Page() {
+   
+    
     return (
         <div className="flex items-center justify-center min-h-screen bg-gray-100">
             <Card className="w-full max-w-md">
@@ -25,7 +29,11 @@ function Page() {
                 <CardContent>
                     <form action={async (formData: FormData) => {
                         'use server'
-                        await connect()
+                        if (typeof window === 'undefined') {
+                          const { connect } = await import('../../dbconfig/dbconfig.node');
+                          await connect();
+                      }
+                        
                         const name = formData.get("name") as string
                         const password = formData.get("password") as string
                         const email = formData.get("email") as string
@@ -37,7 +45,7 @@ function Page() {
                             const newUser = UserModel.create({
                                 name: name, email: email, password: password
                             })
-                            
+                            console.log(newUser)
                         }
                     }}>
                         <div className="mb-4">

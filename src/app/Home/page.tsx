@@ -10,16 +10,11 @@ import { ThreeDCardDemo } from '../../components/ui/Category'
 import { connect } from '../../dbconfig/dbconfig'
 import Image from 'next/image'
 import Link from 'next/link'
-import { useSearchParams, useRouter } from "next/navigation";
+
 
 
 async function page() {
- /* const handle:any=(query: string)=>{
-    const router=useRouter()
-
-    router.push(`/topdest?query=${encodeURIComponent(query)}`)
-  }*/
-  
+ 
   return (
     <div>
     
