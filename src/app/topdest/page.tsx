@@ -7,6 +7,7 @@ import run from '../../Apis/Dest/page';
 import turn from '../../Apis/Dest/page2';
 import { PexelsQuery } from '../../Apis/pexelsapi';
 
+
 interface Photo {
   id: number;
   src: {
@@ -16,7 +17,7 @@ interface Photo {
   photographer: string;
 }
 
-const TouristDestinations = () => {
+const Page = () => {
   const [photos, setPhotos] = useState<Photo[]>([]);
   const [destinations, setDestinations] = useState("");
   const searchParams = useSearchParams();
@@ -109,5 +110,14 @@ const TouristDestinations = () => {
     </div>
   );
 };
+
+
+const TouristDestinations = () => (
+  <Suspense fallback={<div>Loading...</div>}>
+    <Page/>
+  </Suspense>
+);
+
+
 
 export default TouristDestinations;
