@@ -166,17 +166,14 @@ const Page: React.FC = () => {
             No photos found.
           </p>
         )}
-     
-
         <div className="text-center mt-6 h-10 mr-11">
           <button
-            className="border w-full text-white font-extrabold bg-black py-3 px-6 rounded-md hover:bg-slate-600  transition-colors duration-300 transform hover:scale-105"
+            className="border w-full text-white font-extrabold bg-black py-3 px-6 rounded-md hover:bg-slate-600 transition-colors duration-300 transform hover:scale-105"
             onClick={handleGoBack}
-            >
+          >
             Go Back
           </button>
         </div>
-           
       </div>
       <div className="text-center mt-6">
         <button
@@ -189,9 +186,11 @@ const Page: React.FC = () => {
     </main>
   );
 };
+
 const Country = () => (
   <Suspense fallback={<div>Loading...</div>}>
     <Page/>
   </Suspense>
 );
+
 export default Country;
