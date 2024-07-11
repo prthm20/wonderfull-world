@@ -12,7 +12,7 @@ import {
 import UserModel from '../../model/User'
 import { connect } from '../../dbconfig/dbconfig'
 import Link from 'next/link'
-import handler from '@/Apis/connect-db'
+
 
 function Page() {
    
