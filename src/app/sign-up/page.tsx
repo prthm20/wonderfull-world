@@ -37,6 +37,7 @@ function Page() {
                             const newUser = UserModel.create({
                                 name: name, email: email, password: password
                             })
+                            
                         }
                     }}>
                         <div className="mb-4">

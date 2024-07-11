@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useState } from "react";
+import React, { Suspense, useEffect, useState } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import Image from "next/image";
 import { PexelsQuery } from "../../Apis/pexelsapi";
@@ -28,7 +28,7 @@ interface CountryDetails {
   flags: { png: string };
 }
 
-const Country: React.FC = () => {
+const Page: React.FC = () => {
   const [photos, setPhotos] = useState<Photo[]>([]);
   const [name, setName] = useState("");
   const [flag, setFlag] = useState("");
@@ -189,5 +189,9 @@ const Country: React.FC = () => {
     </main>
   );
 };
-
+const Country = () => (
+  <Suspense fallback={<div>Loading...</div>}>
+    <Page/>
+  </Suspense>
+);
 export default Country;

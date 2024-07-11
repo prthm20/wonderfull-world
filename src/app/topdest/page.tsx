@@ -1,15 +1,14 @@
 'use client'
-import React, { useState, useEffect, ChangeEvent } from 'react';
-import run from '../../Apis/Dest/page';
+import React, { useState, useEffect, ChangeEvent, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { PexelsQuery } from '../../Apis/pexelsapi';
 import Image from 'next/image';
-import turn from '../../Apis/Dest/page2'
 import Navbar from '../../components/ui/Navbar';
+import run from '../../Apis/Dest/page';
+import turn from '../../Apis/Dest/page2';
+import { PexelsQuery } from '../../Apis/pexelsapi';
 
-interface TouristDestinationsProps {
-  query: string;
-}
+
+
 interface Photo {
   id: number;
   src: {
@@ -19,13 +18,14 @@ interface Photo {
   photographer: string;
 }
 
-const TouristDestinations: React.FC<TouristDestinationsProps> = () => {
+const Page = () => {
   const [photos, setPhotos] = useState<Photo[]>([]);
   const [destinations, setDestinations] = useState("");
-  const [searchQuery, setSearchQuery] = useState('');
-  const router = useRouter();
   const searchParams = useSearchParams();
   const query: string = searchParams.get('query') || '';
+  const [searchQuery, setSearchQuery] = useState(query);
+  const router = useRouter();
+ 
 
   useEffect(() => {
     const fetchData = async (query: string) => {
@@ -56,7 +56,7 @@ const TouristDestinations: React.FC<TouristDestinationsProps> = () => {
 
   return (
     <div className="min-h-screen bg-gray-100">
-      <Navbar></Navbar>
+      <Navbar />
       <div className="max-w-lg mx-auto mt-8 p-4">
         <h1 className="text-4xl font-bold text-center text-gray-900 pb-4">Explore Travel Destinations</h1>
         <form onSubmit={handleSearchSubmit} className="bg-white rounded-lg shadow-lg p-4">
@@ -96,11 +96,11 @@ const TouristDestinations: React.FC<TouristDestinationsProps> = () => {
             ))}
           </div>
         ) : (
-          <p className="text-center text-gray-700 mt-10"></p>
+          <p className="text-center text-gray-700 mt-10">No photos found</p>
         )}
       </div>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <h2 className="text-3xl font-bold text-gray-800 mb-6"></h2>
+        <h2 className="text-3xl font-bold text-gray-800 mb-6">Travel Destinations</h2>
         <div className="bg-white shadow-md rounded-lg p-6">
           {destinations ? (
             <p className="text-gray-700">{destinations}</p>
@@ -112,5 +112,10 @@ const TouristDestinations: React.FC<TouristDestinationsProps> = () => {
     </div>
   );
 };
+const TouristDestinations = () => (
+  <Suspense fallback={<div>Loading...</div>}>
+    <Page/>
+  </Suspense>
+);
 
 export default TouristDestinations;

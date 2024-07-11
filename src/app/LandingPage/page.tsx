@@ -19,7 +19,7 @@ worthwhile.
 <div className="m-16 ml-20">
 <Link href={"/Home"}>
     <button className=" text-center text-white font-extrabold bg-violet-600 p-5 rounded-full hover:bg-fuchsia-500">
-            Let's Explore &rarr; 
+            Let&apos;s Explore &rarr; 
     </button>
 </Link>
 </div>

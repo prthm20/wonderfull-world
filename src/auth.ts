@@ -11,8 +11,8 @@ export const { handlers, signIn, signOut, auth }= NextAuth({
   
     providers: [
         GoogleProvider({
-            clientId: process.env.AUTH_GOOGLE_ID,
-            clientSecret: process.env.AUTH_GOOGLE_SECRET,
+            clientId:"492418097037-ba3seje3cnnshocs3v8c5eoer4vm6ae3.apps.googleusercontent.com",
+            clientSecret:"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",
             
         
         }),

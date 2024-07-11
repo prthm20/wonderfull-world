@@ -8,7 +8,7 @@ import Foter from '../../components/ui/Foter'
 import { ThreeDCardDemo } from '../../components/ui/Category'
 
 import { connect } from '../../dbconfig/dbconfig'
-import UserModel from '../../model/User'
+import Image from 'next/image'
 import Link from 'next/link'
 import { useSearchParams, useRouter } from "next/navigation";
 
@@ -25,7 +25,8 @@ async function page() {
     
      <Navbar></Navbar>
      <div className='p-28' >
-      <img src="https://images.pexels.com/photos/3030268/pexels-photo-3030268.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt=""  className=' rounded-2xl' />
+   
+<Image src="https://images.pexels.com/photos/3030268/pexels-photo-3030268.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt=""  className=' rounded-2xl' width={1500} height={1500}/>
      </div>
      <div className=' text-center  text-2xl text-bold font-sans opacity-70'><h1>Categories</h1></div>
     <div className='flex  '>
