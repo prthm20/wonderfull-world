@@ -3,6 +3,7 @@ import React, { useState, ChangeEvent } from 'react';
 import Navbar from '../../components/ui/Navbar';
 import { Plan } from '../../Apis/Dest/page3';
 import axios from 'axios';
+import Directions from '../../components/ui/GoogelMaps/Directions'
 
 interface Accommodation {
   CheckInDate: string;
@@ -162,6 +163,9 @@ const Route: React.FC = () => {
       <div className="max-w-screen mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {plan ? (
           <div className="bg-white rounded-lg shadow-lg p-6 space-y-8">
+             <div >
+                <Directions start={start} end={end} />
+            </div>
             <div className='text-center text-3xl font-semibold mb-6'>
               Your plan &darr;
             </div>

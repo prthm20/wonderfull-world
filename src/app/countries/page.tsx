@@ -7,6 +7,7 @@ import { PexelsQuery } from "../../Apis/pexelsapi";
 import Navbar from "../../components/ui/Navbar";
 import { CountryQuery } from "../../components/ui/Countriees";
 import TouristDestinations from "../topdest/page";
+import PlaceMap from "../../components/ui/GoogelMaps/PlacesMaps";
 
 interface Photo {
   id: number;
@@ -111,9 +112,14 @@ const Page: React.FC = () => {
               className="rounded-lg border border-black shadow-sm"
             />
           </div>
+             
           <div className="bg-white p-6 rounded-lg shadow-xl transform transition-transform duration-300 hover:scale-105 text-3xl font-bold m-5">
             Capital : {capital}
           </div>
+          <div className="sm:flex  flex-wrap">
+             
+             <PlaceMap map_params={name} />
+             </div>
         </div>
         <div className="flex flex-wrap justify-evenly items-center p-4">
           <div className="bg-white p-6 rounded-lg shadow-xl transform transition-transform duration-300 hover:scale-105 text-3xl font-bold m-5">
