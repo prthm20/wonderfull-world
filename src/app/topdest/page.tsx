@@ -17,10 +17,14 @@ interface Photo {
   };
   photographer: string;
 }
+interface Destination {
+  
+  description: number;
+}
 
 const Page = () => {
   const [photos, setPhotos] = useState<Photo[]>([]);
-  const [destinations, setDestinations] = useState("");
+  const [destinations, setDestinations] = useState();
   const searchParams = useSearchParams();
   const [Recommendations, setRecommendations] = useState<string[] | undefined>([]);
   const query: string = searchParams.get('query') || '';
@@ -34,9 +38,15 @@ const Page = () => {
           const Recommendation: any = await run(query);
           console.log(Recommendation);
           const arr = Recommendation.places;
-          const textdata = await turn(searchQuery);
-    setDestinations(textdata);
+          const textdata = await turn(query);
+          const arrr= textdata.description;
+          setDestinations(arrr);
           setRecommendations(arr);
+         
+          console.log(textdata.description)
+        
+          
+          
         } catch (error) {
           console.error("Error fetching recommendations:", error);
         }
@@ -51,14 +61,26 @@ const Page = () => {
     const data = await PexelsQuery(searchQuery);
     setPhotos(data.photos);
     const textdata = await turn(searchQuery);
-    setDestinations(textdata);
+    const Recommendation: any = await run(searchQuery);
+    console.log(Recommendation);
+    const arr = Recommendation.places;
+    setRecommendations(arr);
+    console.log(textdata.description)
+    const arrr= textdata.description;
+  
+    
+    
+    setDestinations(arrr);
+    
   };
   const handleRecSubmit = async (place:string) => {
     setSearchQuery(place)
     const data = await PexelsQuery(place);
     setPhotos(data.photos);
     const textdata = await turn(place);
-    setDestinations(textdata);
+    const arrr= textdata.description;
+    setDestinations(arrr);
+    
     
    
   };
@@ -120,7 +142,9 @@ const Page = () => {
         <div className="bg-white shadow-md rounded-lg p-6">
        
        <div>
+        {/*destinations.map((place) => ({place} ))*/}
         {destinations}
+       
        </div>
        
        {Recommendations ? (
