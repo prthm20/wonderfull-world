@@ -34,6 +34,8 @@ const Page = () => {
           const Recommendation: any = await run(query);
           console.log(Recommendation);
           const arr = Recommendation.places;
+          const textdata = await turn(searchQuery);
+    setDestinations(textdata);
           setRecommendations(arr);
         } catch (error) {
           console.error("Error fetching recommendations:", error);
@@ -55,6 +57,8 @@ const Page = () => {
     setSearchQuery(place)
     const data = await PexelsQuery(place);
     setPhotos(data.photos);
+    const textdata = await turn(place);
+    setDestinations(textdata);
     
    
   };
@@ -108,13 +112,18 @@ const Page = () => {
             ))}
           </div>
         ) : (
-          <p className="text-center text-gray-700 mt-10">No photos found</p>
+          <p className="text-center text-gray-700 mt-10"></p>
         )}
       </div>
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <h2 className="text-3xl font-bold text-gray-800 mb-6">Travel Destinations</h2>
         <div className="bg-white shadow-md rounded-lg p-6">
-        {Recommendations ? (
+       
+       <div>
+        {destinations}
+       </div>
+       
+       {Recommendations ? (
             <div>
               <div className='text-center text-3xl p-3'>
                 Suggestions
