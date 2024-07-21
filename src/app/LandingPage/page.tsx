@@ -1,8 +1,13 @@
+'use client'
 import React from 'react'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 
 function Landingpage() {
+  const router = useRouter()
+  router.push(`/Home`)
   return (
+    
     <div>
        <div className="flex justify-between h-full w-100%">
 

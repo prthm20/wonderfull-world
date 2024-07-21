@@ -3,6 +3,7 @@ import Navbar from '../../components/ui/Navbar';
 import {connect} from '../../dbconfig/dbconfig'
 import UserModel from '../../model/User'
 import React from 'react';
+import { SessionProvider } from "next-auth/react";
 
 async function AboutUsPage ()  {
 
@@ -11,7 +12,10 @@ async function AboutUsPage ()  {
   return (
     <>
    <div>
+    <SessionProvider>
+
     <Navbar></Navbar>
+    </SessionProvider>
    </div>
     <div className="bg-gray-100 min-h-screen">
       <div className="max-w-3xl mx-auto py-16 px-6 sm:px-8 lg:px-12">

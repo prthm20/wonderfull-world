@@ -8,6 +8,7 @@ import Navbar from "../../components/ui/Navbar";
 import { CountryQuery } from "../../components/ui/Countriees";
 import TouristDestinations from "../topdest/page";
 import PlaceMap from "../../components/ui/GoogelMaps/PlacesMaps";
+import { SessionProvider } from "next-auth/react";
 
 interface Photo {
   id: number;
@@ -96,7 +97,10 @@ const Page: React.FC = () => {
 
   return (
     <main className="bg-indigo-100 min-h-screen">
+      <SessionProvider>
+
       <Navbar />
+      </SessionProvider>
       <div className="text-blue-900 text-5xl font-bold font-serif text-center mt-10 drop-shadow-lg">
         {name}
       </div>

@@ -6,6 +6,7 @@ import Navbar from '../../components/ui/Navbar';
 import run from '../../Apis/Dest/page';
 import turn from '../../Apis/Dest/page2';
 import { PexelsQuery } from '../../Apis/pexelsapi';
+import { SessionProvider } from "next-auth/react";
 
 
 interface Photo {
@@ -54,7 +55,10 @@ const Page = () => {
 
   return (
     <div className="min-h-screen bg-gray-100">
+      <SessionProvider>
+
       <Navbar />
+      </SessionProvider>
       <div className="max-w-lg mx-auto mt-8 px-4 sm:px-6 lg:px-8">
         <h1 className="text-4xl font-bold text-center text-gray-900 pb-4">Explore Travel Destinations</h1>
         <form onSubmit={handleSearchSubmit} className="bg-white rounded-lg shadow-lg p-4">

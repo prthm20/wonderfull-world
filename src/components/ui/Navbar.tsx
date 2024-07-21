@@ -1,10 +1,12 @@
 'use client'
 import React, { useState } from 'react';
+import { useSession, signIn, signOut } from 'next-auth/react';
 import { Avatar, AvatarFallback, AvatarImage } from "./avatar";
 import Link from 'next/link';
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const { data: session } = useSession();
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -27,7 +29,25 @@ function Navbar() {
             <Link href="/RoutePlan" className="text-gray-700 hover:text-black px-3 py-2 rounded-md text-sm font-medium">PlanRoute</Link>
             <Link href="/contact" className="text-gray-700 hover:text-black px-3 py-2 rounded-md text-sm font-medium">Contact</Link>
             <Link href="/about" className="text-gray-700 hover:text-black px-3 py-2 rounded-md text-sm font-medium">About</Link>
-            <Link href="/sign-up" className="px-6 py-2 rounded-xl bg-black text-white text-xs font-bold">Signup</Link>
+            {session ? (
+            <div>
+              <button
+              className='sm:py-2 p-3 lg:py-3 px-3  rounded-xl hover:bg-white hover:text-black hover:border-2 hover:border-black bg-black   text-white'
+              onClick={() => signOut()
+              
+              }>Sign out</button>
+            </div>
+          ) : (
+            <div>
+              <Link href="/sign-up" >
+                <button
+                className='sm:py-2 p-3 lg: px-3  rounded-xl hover:bg-white hover:text-black hover:border-2 hover:border-black bg-black   text-white '
+                >Signin</button>
+              </Link>
+            </div>
+          )}
+        
+
           </div>
           <div className="md:hidden">
             <button
@@ -60,7 +80,29 @@ function Navbar() {
             <Link href="/RoutePlan" className="block text-gray-700 hover:text-black px-3 py-2 rounded-md text-base font-medium">PlanRoute</Link>
             <Link href="/contact" className="block text-gray-700 hover:text-black px-3 py-2 rounded-md text-base font-medium">Contact</Link>
             <Link href="/about" className="block text-gray-700 hover:text-black px-3 py-2 rounded-md text-base font-medium">About</Link>
-            <Link href="/sign-up" className="block px-6 py-2 rounded-xl bg-black text-white text-xs font-bold">Signup</Link>
+          
+           
+          {session ? (
+            <div>
+              <button
+              className='sm:py-2 p-3 lg:py-3 px-3  rounded-xl hover:bg-white hover:text-black hover:border-2 hover:border-black bg-black   text-white'
+              onClick={() => signOut()
+              
+              }>Sign out</button>
+            </div>
+          ) : (
+            <div>
+              <Link href="/sign-up" >
+                <button
+                className='sm:py-2 p-3 lg: px-3  rounded-xl hover:bg-white hover:text-black hover:border-2 hover:border-black bg-black   text-white '
+                >Signin</button>
+              </Link>
+            </div>
+          )}
+        
+          
+          
+          
           </div>
         </div>
       )}

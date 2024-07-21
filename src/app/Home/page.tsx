@@ -6,11 +6,14 @@ import { ThreeDCardDemo } from '../../components/ui/Category'
 import { connect } from '../../dbconfig/dbconfig'
 import Image from 'next/image'
 import Link from 'next/link'
-
-async function page() {
+import { SessionProvider } from "next-auth/react";
+ function pagee() {
   return (
     <div>
+      <SessionProvider>
+
       <Navbar />
+      </SessionProvider>
       <div className='p-4 sm:p-8 md:p-16 lg:p-28'>
         <Image 
           src="https://images.pexels.com/photos/3030268/pexels-photo-3030268.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" 
@@ -44,6 +47,16 @@ async function page() {
           sourc='https://images.pexels.com/photos/10980106/pexels-photo-10980106.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1' 
           query='wonders of world' 
         />
+        <ThreeDCardDemo 
+          title="Wonders of world" 
+          sourc='https://images.pexels.com/photos/10980106/pexels-photo-10980106.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1' 
+          query='wonders of world' 
+        />
+        <ThreeDCardDemo 
+          title="Wonders of world" 
+          sourc='https://images.pexels.com/photos/10980106/pexels-photo-10980106.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1' 
+          query='wonders of world' 
+        />
       </div>
       <div className='p-5'>
         <div className='text-center text-2xl font-bold font-sans opacity-70'>
@@ -58,4 +71,4 @@ async function page() {
   )
 }
 
-export default page
+export default pagee

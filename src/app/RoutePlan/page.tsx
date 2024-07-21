@@ -4,6 +4,7 @@ import Navbar from '../../components/ui/Navbar';
 import { Plan } from '../../Apis/Dest/page3';
 import axios from 'axios';
 import Directions from '../../components/ui/GoogelMaps/Directions'
+import { SessionProvider } from "next-auth/react";
 
 interface Accommodation {
   CheckInDate: string;
@@ -117,6 +118,11 @@ const Route: React.FC = () => {
   };
 
   return (
+    <>
+    
+      <SessionProvider>
+        <Navbar/>
+      </SessionProvider>
     <div className="min-h-screen bg-gradient-to-r pt-20 from-indigo-200 via-purple-200 to-pink-200">
       <div className="max-w-screen mx-auto mt-16 p-6 bg-white rounded-lg shadow-lg">
         <h1 className="text-5xl font-extrabold text-center text-gray-900 mb-8">Plan Your Trip</h1>
@@ -299,7 +305,9 @@ const Route: React.FC = () => {
         ) : null}
       </div>
     </div>
+    </>
   );
+
 };
 
 export default Route;

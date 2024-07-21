@@ -1,6 +1,13 @@
+'use client'
 import React from 'react'
 import { Input } from "../../components/ui/input"
 import type { NextApiRequest, NextApiResponse } from 'next';
+import { useSearchParams, useRouter } from "next/navigation";
+
+import { useToast } from "../../components/ui/use-toast"
+
+import axios from 'axios'
+
 import {
     Card,
     CardContent,
@@ -15,9 +22,44 @@ import Link from 'next/link'
 
 
 function Page() {
+    let router = useRouter()
+    const { toast } = useToast()
+    const [user, setUser] = React.useState({
+        email: "",
+        password: "",
+        name:"",})
    
+    const onEmail = async (event: React.FormEvent) => {
+        event.preventDefault();
+      
+       try {
+        
+           const response = await axios.post('/api/sign-up', {
+               name:user.name,
+               email:user.email ,
+               password:user.password,
+            })
+            console.log(response)
+            if (response.status==200) {
+                toast({
+                    title: "Success",
+                    description: "SignUp was succesfull",
+                })  
+            }
+            
+        } catch (error) {
+            toast({
+                title: "Regisration failed",
+                description: "SignUp failed",
+            })  
+        }
+        }
+        
     
+    
+
     return (
+
         <div className="flex items-center justify-center min-h-screen bg-gray-100">
             <Card className="w-full max-w-md">
                 <CardHeader>
@@ -27,32 +69,15 @@ function Page() {
                     </CardDescription>
                 </CardHeader>
                 <CardContent>
-                    <form action={async (formData: FormData) => {
-                        'use server'
-                        if (typeof window === 'undefined') {
-                          const { connect } = await import('../../dbconfig/dbconfig.node');
-                          await connect();
-                      }
-                        
-                        const name = formData.get("name") as string
-                        const password = formData.get("password") as string
-                        const email = formData.get("email") as string
-
-                        const user = await UserModel.findOne({ email: email });
-                        if (user) {
-                            console.log("user with email already exists")
-                        } else {
-                            const newUser = UserModel.create({
-                                name: name, email: email, password: password
-                            })
-                            console.log(newUser)
-                        }
-                    }}>
+              
+                    <form onSubmit={onEmail}>
                         <div className="mb-4">
                             <input
                                 name="name"
                                 type="text"
                                 placeholder="Your Name"
+                                onChange={(e) => setUser({...user, name: e.target.value})}
+                                value={user.name} 
                                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                             />
                         </div>
@@ -61,6 +86,8 @@ function Page() {
                                 type="email"
                                 placeholder="Email id"
                                 name='email'
+                                onChange={(e) => setUser({...user, email: e.target.value})}
+                                value={user.email} 
                                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                             />
                         </div>
@@ -79,6 +106,8 @@ function Page() {
                                 type="text"
                                 placeholder="password"
                                 name="password"
+                                onChange={(e) => setUser({...user, password: e.target.value})}
+                                value={user.password}
                                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                             />
                         </div>
@@ -91,10 +120,14 @@ function Page() {
                             </button>
                         </div>
                     </form>
+                <div>
+                 signup with google? <Link href={"/api/auth/signin"}>sign-up</Link>
+              
+                </div>
                 </CardContent>
             </Card>
         </div>
-    )
-}
+    )}
+
 
 export default Page

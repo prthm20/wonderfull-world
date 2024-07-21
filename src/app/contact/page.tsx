@@ -5,6 +5,8 @@ import axios from 'axios'
 import Foter from '../../components/ui/Foter'
 import Navbar from '../../components/ui/Navbar'
 import { Input } from "../../components/ui/input";
+import { SessionProvider } from "next-auth/react";
+
 
 function Page() {
   const [user, setUser] = React.useState({
@@ -26,7 +28,10 @@ function Page() {
   return (
 <>
 <div>
-  <Navbar></Navbar>
+  <SessionProvider>
+
+  <Navbar/>
+  </SessionProvider>
 </div>
 
     <div className="flex justify-center items-center min-h-screen bg-gray-100">
