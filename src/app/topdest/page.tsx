@@ -22,24 +22,27 @@ const Page = () => {
   const [photos, setPhotos] = useState<Photo[]>([]);
   const [destinations, setDestinations] = useState("");
   const searchParams = useSearchParams();
+  const [Recommendations, setRecommendations] = useState<string[] | undefined>([]);
   const query: string = searchParams.get('query') || '';
   const [searchQuery, setSearchQuery] = useState(query);
   const router = useRouter();
 
   useEffect(() => {
-    const fetchData = async (query: string) => {
+    const fetchData = async () => {
       if (query) {
         try {
-          const data = await run(query);
-          setDestinations(data);
+          const Recommendation: any = await run(query);
+          console.log(Recommendation);
+          const arr = Recommendation.places;
+          setRecommendations(arr);
         } catch (error) {
-          console.error("Error fetching destinations:", error);
+          console.error("Error fetching recommendations:", error);
         }
       }
     };
 
-    fetchData(query);
-  }, [query]);
+    fetchData();
+  },[query]);
 
   const handleSearchSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -47,6 +50,13 @@ const Page = () => {
     setPhotos(data.photos);
     const textdata = await turn(searchQuery);
     setDestinations(textdata);
+  };
+  const handleRecSubmit = async (place:string) => {
+    setSearchQuery(place)
+    const data = await PexelsQuery(place);
+    setPhotos(data.photos);
+    
+   
   };
 
   const handleSearchChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -104,10 +114,28 @@ const Page = () => {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <h2 className="text-3xl font-bold text-gray-800 mb-6">Travel Destinations</h2>
         <div className="bg-white shadow-md rounded-lg p-6">
-          {destinations ? (
-            <p className="text-gray-700">{destinations}</p>
+        {Recommendations ? (
+            <div>
+              <div className='text-center text-3xl p-3'>
+                Suggestions
+              </div>
+
+              <div className="text-gray-700 flex-wrap lg:grid lg:grid-cols-3  justify-center sm:grid-cols-2 sm:grid sm:justify-evenly">
+                {Recommendations.map((place, index) => (
+                  <button key={index} 
+                  onClick={()=>{
+                    handleRecSubmit(place)
+                  }
+
+                  }
+                  className="p-1 text-left border m-2 rounded-md border-black">
+                    {place}
+                  </button>
+                ))}
+              </div>
+            </div>
           ) : (
-            <p className="text-gray-700">Loading...</p>
+            <div className="text-gray-700 text-center">Loading recommendations...</div>
           )}
         </div>
       </div>

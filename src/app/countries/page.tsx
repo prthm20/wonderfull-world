@@ -35,6 +35,7 @@ const Page: React.FC = () => {
   const [name, setName] = useState("");
   const [flag, setFlag] = useState("");
   const [capital, setCapital] = useState("");
+  const [Recommendations, setRecommendations] = useState<string[] | undefined>([]);
   const [currency, setCurrency] = useState("");
   const [currencySymbol, setCurrencySymbol] = useState("");
   const [languages, setLanguages] = useState<string[]>([]);
