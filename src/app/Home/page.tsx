@@ -48,14 +48,14 @@ import { SessionProvider } from "next-auth/react";
           query='wonders of world' 
         />
         <ThreeDCardDemo 
-          title="Wonders of world" 
-          sourc='https://images.pexels.com/photos/10980106/pexels-photo-10980106.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1' 
-          query='wonders of world' 
+          title="Ancient" 
+          sourc='https://images.pexels.com/photos/1007425/pexels-photo-1007425.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1' 
+          query='Ancient' 
         />
         <ThreeDCardDemo 
-          title="Wonders of world" 
-          sourc='https://images.pexels.com/photos/10980106/pexels-photo-10980106.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1' 
-          query='wonders of world' 
+          title="Sports" 
+          sourc='https://images.pexels.com/photos/1657328/pexels-photo-1657328.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1' 
+          query='Sports' 
         />
       </div>
       <div className='p-5'>
