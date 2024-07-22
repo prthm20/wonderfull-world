@@ -229,7 +229,7 @@ const Route: React.FC = () => {
                       Send &rarr;
                     </button>
                   </div>
-                ) : "generating your Plan..."}
+                ) : ""}
               </div>
 
               {/* Rendering the plan details */}
