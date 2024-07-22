@@ -5,6 +5,7 @@ import { Plan } from '../../Apis/Dest/page3';
 import axios from 'axios';
 import Directions from '../../components/ui/GoogelMaps/Directions'
 import { SessionProvider } from "next-auth/react";
+import { useToast } from "../../components/ui/use-toast"
 
 interface Accommodation {
   CheckInDate: string;
@@ -88,9 +89,18 @@ const Route: React.FC = () => {
 
   const handleSearchSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    toast({
+      title: "",
+      description: "generating your plan this may take sometime.........",
+  })  
     const daysNumber = parseInt(days as string, 10); // Convert days to a number
     const data: PlanDetails = await Plan(start, end, date, daysNumber);
-    
+    if(data){
+      toast({
+        title: "Success",
+        description: "Plan generated succesfully",
+    })  
+    }
     setAccommodation(data.Details.Accommodation[0]);
     setActivities(data.Details.Activities);
     setBudget(data.Details.Budget);
@@ -105,12 +115,19 @@ const Route: React.FC = () => {
       transportation: data.Details.Transportation 
     });
   };
+  const { toast } = useToast()
 
   const onSendEmail = async () => {
     try {
       const response = await axios.post('/api/plansend', { 
         accommodation, activities, budget, packingList, transportation, email, name 
       });
+      if(response){
+        toast({
+          title: "Success",
+          description: "email sent succesfully",
+      })  
+      }
       console.log(response.data);
     } catch (error: any) {
       console.log('Unable to send email', error.message);
@@ -211,7 +228,7 @@ const Route: React.FC = () => {
                       Send &rarr;
                     </button>
                   </div>
-                ) : null}
+                ) : "generating your Plan..."}
               </div>
 
               {/* Rendering the plan details */}
@@ -302,7 +319,7 @@ const Route: React.FC = () => {
               </div>
             </div>
           </div>
-        ) : null}
+        ) :""}
       </div>
     </div>
     </>
