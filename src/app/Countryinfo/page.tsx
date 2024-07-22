@@ -39,7 +39,7 @@ function Page() {
                 <div className='mt-5 sm:mt-10'>
                     <button
                         type="submit"
-                        className="w-full py-4 bg-gradient-to-r  font-bold rounded-lg shadow-lg hover:bg-gradient-to-l transition-all duration-300  bg-gray-700 hover:bg-gray-900 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                        className="w-full  bg-gradient-to-r  shadow-lg hover:bg-gradient-to-l transition-all duration-300  bg-gray-700 hover:bg-gray-900 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                         onClick={handleSearchSubmit}
                         >
                         Search
