@@ -34,7 +34,7 @@ function Page() {
   </SessionProvider>
 </div>
 
-    <div className="flex justify-center items-center min-h-screen bg-gray-100">
+    <div className="max-w-lg mx-auto mt-8 px-4 sm:px-6 lg:px-8">
 
       <form className="w-full max-w-lg bg-white p-8 rounded-lg shadow-lg" onSubmit={onEmail}>
         <div className="mb-4">

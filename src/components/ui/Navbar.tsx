@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { useSession, signIn, signOut } from 'next-auth/react';
 import { Avatar, AvatarFallback, AvatarImage } from "./avatar";
 import Link from 'next/link';
+import Image from 'next/image';
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -16,11 +17,13 @@ function Navbar() {
     <nav className="bg-white shadow-md">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          <div className="flex items-center">
-            <Avatar>
+        <div className="flex items-center">
+          <Link href={'/Home'}>
+            <Avatar className='h-8 w-24'>
               <AvatarImage src="file:///C:/Users/pratham%20angdalwar/Downloads/travel-high-resolution-logo.svg" />
-              <AvatarFallback>Travlog</AvatarFallback>
+          <AvatarFallback className=' text-orange-300  bg-slate-600 rounded-none'>Travlog</AvatarFallback>
             </Avatar>
+          </Link>
           </div>
           <div className="hidden md:flex md:items-center md:space-x-4">
             <Link href="/Home" className="text-gray-700 hover:text-black px-3 py-2 rounded-md text-sm font-medium">Home</Link>

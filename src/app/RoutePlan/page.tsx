@@ -140,7 +140,7 @@ const Route: React.FC = () => {
       <SessionProvider>
         <Navbar/>
       </SessionProvider>
-    <div className="min-h-screen bg-gradient-to-r pt-20 from-indigo-200 via-purple-200 to-pink-200">
+    <div className="min-h-screen bg-gradient-to-r pt-2  bg-w mx-auto mt-8 px-4 sm:px-6 lg:px-8">
       <div className="max-w-screen mx-auto mt-16 p-6 bg-white rounded-lg shadow-lg">
         <h1 className="text-5xl font-extrabold text-center text-gray-900 mb-8">Plan Your Trip</h1>
         <form onSubmit={handleSearchSubmit} className="space-y-6">
@@ -176,8 +176,9 @@ const Route: React.FC = () => {
           </div>
           <button
             type="submit"
-            className="w-full py-4 bg-gradient-to-r from-violet-500 to-fuchsia-500 text-white font-bold rounded-lg shadow-lg hover:bg-gradient-to-l hover:from-fuchsia-500 hover:to-violet-500 transition-all duration-300"
-          >
+            className="w-full  bg-gradient-to-r   shadow-lg hover:bg-gradient-to-l transition-all duration-300  bg-gray-700 hover:bg-gray-900 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline
+          ">
+         
             Generate
           </button>
         </form>

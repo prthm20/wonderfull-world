@@ -1,3 +1,4 @@
+'use client'
 import React from 'react'
 import Navbar from '../../components/ui/Navbar'
 import { InfiniteMovingCardsDemo } from '../../components/ui/Testimonials'
@@ -7,7 +8,7 @@ import { connect } from '../../dbconfig/dbconfig'
 import Image from 'next/image'
 import Link from 'next/link'
 import { SessionProvider } from "next-auth/react";
- function pagee() {
+ const Page=(): JSX.Element=> {
   return (
     <div>
       <SessionProvider>
@@ -71,4 +72,4 @@ import { SessionProvider } from "next-auth/react";
   )
 }
 
-export default pagee
+export default Page

@@ -17,7 +17,7 @@ async function AboutUsPage ()  {
     <Navbar></Navbar>
     </SessionProvider>
    </div>
-    <div className="bg-gray-100 min-h-screen">
+    <div className="mx-auto mt-8 px-4 sm:px-6 lg:px-8">
       <div className="max-w-3xl mx-auto py-16 px-6 sm:px-8 lg:px-12">
         <h1 className="text-3xl sm:text-4xl font-bold text-center text-gray-800 mb-8">About Travlog</h1>
         
