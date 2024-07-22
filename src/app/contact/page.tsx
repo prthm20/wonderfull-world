@@ -6,9 +6,10 @@ import Foter from '../../components/ui/Foter'
 import Navbar from '../../components/ui/Navbar'
 import { Input } from "../../components/ui/input";
 import { SessionProvider } from "next-auth/react";
-
+import { useToast } from "../../components/ui/use-toast"
 
 function Page() {
+  const { toast } = useToast()
   const [user, setUser] = React.useState({
     email: "",
     message: "",
@@ -19,6 +20,12 @@ function Page() {
     e.preventDefault()
     try {
       const response = await axios.post("/api/send",user)
+      if(response){
+        toast({
+          title: "Success",
+          description: "email sent succesfully",
+      })  
+      }
       console.log(response)
     } catch (error: any) {
       console.log("unable to send email", error)

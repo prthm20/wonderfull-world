@@ -14,7 +14,7 @@ try{
         const {name,email, accommodation, transportation, budget, activities, packingList } = reqbody
 
     const { data, error } = await resend.emails.send({
-      from: 'Acme <onboarding@resend.dev>',  
+      from: 'pratham <onboarding@pratham.app>',  
       to: [email],
       subject: 'Travel Plan',
       react: PlanEmailTemplate({name:name,email:email,accommodation:accommodation,transportation:transportation,budget:budget,activities:activities,packingList:packingList}),
