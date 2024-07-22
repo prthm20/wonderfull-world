@@ -45,7 +45,7 @@ function Navbar() {
               <Link href="/sign-up" >
                 <button
                 className='sm:py-2 p-3 lg: px-3  rounded-xl hover:bg-white hover:text-black hover:border-2 hover:border-black bg-black   text-white '
-                >Signin</button>
+                >SignUp</button>
               </Link>
             </div>
           )}
