@@ -140,6 +140,7 @@ const Page = () => {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <h2 className="text-3xl font-bold text-gray-800 mb-6">Travel Destinations</h2>
         <div className="bg-white shadow-md rounded-lg p-6">
+          {destinations?(""):("Loading....")}
        
        <div>
         {/*destinations.map((place) => ({place} ))*/}
@@ -150,7 +151,7 @@ const Page = () => {
        {Recommendations ? (
             <div>
               <div className='text-center text-3xl p-3'>
-                Suggestions
+              
               </div>
 
               <div className="text-gray-700 flex-wrap lg:grid lg:grid-cols-3  justify-center sm:grid-cols-2 sm:grid sm:justify-evenly">
