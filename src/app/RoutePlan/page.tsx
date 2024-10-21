@@ -320,7 +320,7 @@ const Route: React.FC = () => {
               </div>
             </div>
           </div>
-        ) :""}
+        ) :"Loading your plan may take some time Please wait...."}
       </div>
     </div>
     </>
